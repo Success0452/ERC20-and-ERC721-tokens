@@ -121,9 +121,11 @@ contract Token is ERC20Token, Owned{
         return true;
     }
 
-    function buyToken(address _receiver, uint8 _value) public payable{
-        require(msg.sender == _minters);
-        balances[_receiver] += _value;
-        balances[_receiver] -= 1000;
+    function buyToken(address _receiver, uint8 _value) public payable returns(bool){
+       require(msg.value >= 0, "You cannot mint GDF with zero ETH");
+        uint256 amount = msg.value/10**17 * 1000;
+        balances[_receiver] += amount;
+        _totalSupply += amount;
+        return true ;
         }
 }

@@ -256,11 +256,11 @@
 	},
 	"sources": {
 		"contracts/token.sol": {
-			"keccak256": "0xd86fe240a8e824c1b81194972b05007c174d49a81e1fd3ef5fc71a3a2ad2aa7d",
+			"keccak256": "0xd895f09d220b5d409995379e91e39e8abf7d72414bbf336ac467ddfd99499363",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://dab4661abf65fe8e3d2f785318c8053d9bead44ff4c2b6e89e5e68b815b768a3",
-				"dweb:/ipfs/QmdM6RPCip77T1aKaaYrN2Rg6sCe9jEdM9gi8Xy8eMAP3u"
+				"bzz-raw://44eaefc0d134c71d79297cc30e29d589a9ca445f268137c303b2f2fa0e14d500",
+				"dweb:/ipfs/QmcdTBykYoQ3poLzhvtLucSpZYSbSMqLpXX1om2fP84M4Z"
 			]
 		}
 	},

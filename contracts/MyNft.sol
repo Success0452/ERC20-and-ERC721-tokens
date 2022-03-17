@@ -200,20 +200,21 @@ contract MyNft is ERC721, ERC721Enumerable, Ownable{
         attributes[tokenId] = Attr(_name, _material, _speed, _acceleration);
     }
 
-    function getSvg(uint tokenId) private view returns (string memory) {
-        string memory svg;
-        svg = "<svg width='512px' height='512px' viewBox='-32 0 512 512' xmlns='http://www.w3.org/2000/svg'><path d='M448 96v256c0 51.815-61.624 96-130.022 96l62.98 49.721C386.905 502.417 383.562 512 376 512H72c-7.578 0-10.892-9.594-4.957-14.279L130.022 448C61.82 448 0 403.954 0 352V96C0 42.981 64 0 128 0h192c65 0 128 42.981 128 96zM200 232V120c0-13.255-10.745-24-24-24H72c-13.255 0-24 10.745-24 24v112c0 13.255 10.745 24 24 24h104c13.255 0 24-10.745 24-24zm200 0V120c0-13.255-10.745-24-24-24H272c-13.255 0-24 10.745-24 24v112c0 13.255 10.745 24 24 24h104c13.255 0 24-10.745 24-24zm-48 56c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm-256 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z'/></svg>";
-        return svg;
-    }
+ 
+  function baseTokenURI() public pure returns (string memory) {
+    return "['https://ipfs.io/ipfs/QmdWise991ftJ2P2mSTgd1QF5kmEL8P3YsyBuBLQ7mLREs', 'https://ipfs.io/ipfs/QmRmd7nv67iEcrpVUqTeLYrX2juQXhomXabz25MD1CTQmg']";
+  }
+
 
     function tokenURI(uint256 tokenId) override(ERC721) public view returns (string memory){
         string memory json = Base64.encode(
             bytes(string(
                 abi.encodePacked(
-                    '{"name": "', attributes[tokenId].name, '",',
-                     '"image_data": "ipfs://QmdWise991ftJ2P2mSTgd1QF5kmEL8P3YsyBuBLQ7mLREs",',
-                     '"attributes": [{"trait_type": "Speed", "value": ', uint2str(attributes[tokenId].speed), '},',
-                        '{"trait_type": "Acceleration", "value": ', uint2str(attributes[tokenId].acceleration), '},',
+                       '{"name": "', attributes[tokenId].name, '",',
+                       '"description": "Friendly OpenSea Creature that enjoys long swims in the ocean.",', 
+                     '"image": "baseTokenURI(tokenId)",',
+                     '"attributes": [{"trait_type": "speed", "value": ', uint2str(attributes[tokenId].speed), '},',
+                        '{"trait_type": "acceleration", "value": ', uint2str(attributes[tokenId].acceleration), '},',
                         ']}'
                 )
             )
